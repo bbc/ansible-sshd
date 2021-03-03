@@ -28,8 +28,8 @@
   changed_when: False
   when:
     - __sshd_test_backup is defined
-    - ansible_virtualization_type|default(None) != 'docker'
-    - ansible_virtualization_type|default(None) != 'podman'
-    - ansible_virtualization_type|default(None) != 'VirtualPC' # for Github Actions
+    - ansible_facts['virtualization_type']|default(None) != 'docker'
+    - ansible_facts['virtualization_type']|default(None) != 'podman'
+    - ansible_facts['virtualization_type']|default(None) != 'VirtualPC' # for Github Actions
     - ansible_connection != 'chroot'
-    - ansible_os_family != 'AIX'
+    - ansible_facts['os_family'] != 'AIX'
